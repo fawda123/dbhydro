@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: dbhydroR\nTitle: 'DBHYDRO' Hydrologic and Water Quality Data\nDescription: Client for programmatic access to the South Florida Water\n  Management District's 'DBHYDRO' database at \n  <http://sfwmd.gov/dbhydro>, with functions\n  for accessing hydrologic and water quality data. \nVersion: 0.1-6\nAuthor: Joseph Stachelek <stachel2@msu.edu>\nMaintainer: Joseph Stachelek <stachel2@msu.edu>\nURL: http://www.github.com/SFWMD/dbhydro\nBugReports: http://www.github.com/SFWMD/dbhydro/issues\nDepends:\n    R (>= 3.0.2)\nImports:\n    httr,\n    reshape2,\n    RCurl,\n    XML\nLicense: GPL\nLazyData: true\nSuggests:\n    testthat\nRoxygenNote: 5.0.1\n",
+    "created" : 1471019300840.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "755251817",
+    "id" : "E0BC4A7A",
+    "lastKnownWriteTime" : 1471028471,
+    "path" : "M:/docs/dbhydro/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "dcf"
+}

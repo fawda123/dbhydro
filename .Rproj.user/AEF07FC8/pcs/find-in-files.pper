@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "M:/docs/dbhydro/R",
+        "query" : "print(",
+        "regex" : false
+    }
+}

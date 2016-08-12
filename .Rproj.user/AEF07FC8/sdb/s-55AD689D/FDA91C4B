@@ -1,0 +1,17 @@
+{
+    "contents" : "context(\"getwq\")\n\ntest_that(\"getwq works\", {\n  skip_on_cran()\n  \n  expect_is(getwq(station_id = c(\"FLAB08\", \"FLAB09\"), date_min = \"2011-03-01\",\n    date_max = \"2012-05-01\", test_name = \"CHLOROPHYLLA-SALINE\"), \"data.frame\")\n  \n})\n\ntest_that(\"getwq fails well\", {\n  skip_on_cran()\n\n  expect_message(getwq(station_id = c(\"FLAB08\", \"FLAB09\"),\n    date_min = \"1990-03-01\", date_max = \"1992-05-01\",\n    test_name = \"CHLOROPHYLLA-SALINE\"), \"No data found\")\n  \n  expect_message(getwq(station_id = \"ROOK467\", date_min = \"2012-07-19\",\n    date_max = \"2016-04-27\", test_name = \"AMMONIA-N\"), \"No data found\")\n  \n})\n\ntest_that(\"non-character dates are handled\", {\n  skip_on_cran()\n  \n  expect_error(getwq(station_id = c(\"FLAB08\", \"FLAB09\"), date_min = 1990-03-01,\n    date_max = 1992-05-01, test_name = \"CHLOROPHYLLA-SALINE\"),\n    \"Enter dates as quote-wrapped character strings in YYYY-MM-DD format\")\n  \n})\n\ntest_that(\"mdl_handling inputs are sane\", {\n  skip_on_cran()\n  \n  expect_error(cleanwq(getwq(\"FLAB01\", \"2014-09-14\", \"2014-09-18\",\n    \"NITRATE+NITRITE-N\", raw = TRUE), mdl_handling = \"crazy\"),\n    \"mdl_handling must be one of 'raw', 'half', or 'full'\")\n})\n\ntest_that(\"multiple stations return correct num of columns\", {\n  skip_on_cran()\n  \n  expect_equal(ncol(getwq(station_id = c(\"FLAB08\",\"FLAB09\"),\n    date_min = \"2011-03-01\", date_max = \"2012-05-01\",\n    test_name = \"CHLOROPHYLLA-SALINE\")), 3)\n  \n})\n",
+    "created" : 1471031778932.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3145045158",
+    "id" : "FDA91C4B",
+    "lastKnownWriteTime" : 1471017973,
+    "path" : "M:/docs/dbhydro/tests/testthat/test-getwq.R",
+    "project_path" : "tests/testthat/test-getwq.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
