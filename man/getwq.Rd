@@ -16,11 +16,16 @@ getwq(station_id = NA, date_min = NA, date_max = NA, test_name = NA,
 
 \item{date_max}{character date must be in POSIXct YYYY-MM-DD format}
 
-\item{test_name}{character string of test name(s). See vignette for specific options}
+\item{test_name}{character string of test name(s). See the ArcGIS Online Station Map at \url{http://my.sfwmd.gov/WAB/EnvironmentalMonitoring/index.html} for specific options}
 
-\item{mdl_handling}{character specify values to return for measurements below the minimum detection limit choice of "raw", "half", or "full".}
+\item{mdl_handling}{character string specifying the handling of measurement values below the minimum detection limit (MDL). Example choices for this argument include:
+\itemize{
+\item \code{raw}: Returns values exactly as they are stored in the database. Current practice is to return values below the MDL as 0 minus the uncertainty estimate.
+\item \code{half}: Returns values below the MDL as half the MDL
+\item \code{full}: Returns values below the MDL as the MDL
+}}
 
-\item{raw}{logical default is FALSE, set to TRUE to return data in "long" format with all comments, qa information, and database codes included.}
+\item{raw}{logical default is FALSE, set to TRUE to return data in "long" format with all comments, qa information, and database codes included}
 
 \item{qc_strip}{logical set TRUE to avoid returning QAQC flagged data entries}
 
@@ -36,6 +41,9 @@ getwq(station_id = NA, date_min = NA, date_max = NA, test_name = NA,
 }
 \description{
 Retrieve water quality data from the DBHYDRO Environmental Database
+}
+\details{
+By default, \code{getwq} returns a cleaned output. First, the cleaning function \code{\link{cleanwq}} converts the raw output from native DBHYDRO long format (each piece of data on its own row) to wide format (each site x variable combination in its own column). Next, the extra columns associated with QA flags, LIMS, and District receiving are removed. Finally, row entries associated with QA field blanks, which are used to check on potential sources of contamination, are removed. Setting the raw flag to TRUE will force getwq to retain information on QA field blanks as well as the other QA fields.
 }
 \examples{
 

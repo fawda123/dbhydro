@@ -4,18 +4,22 @@
 \alias{cleanwq}
 \title{Clean raw water quality DBHYDRO data retrievals}
 \usage{
-cleanwq(dt, mdl_handling = "raw")
+cleanwq(dt, raw = FALSE, mdl_handling = "raw")
 }
 \arguments{
-\item{dt}{data.frame output of getwq}
+\item{dt}{data.frame output of \code{\link{getwq}}}
 
-\item{mdl_handling}{character specify values to return for measurements below the minimum detection limit choice of "raw", "half", or "full".}
+\item{raw}{logical default is FALSE, set to TRUE to return data in "long" format with all comments, qa information, and database codes included}
+
+\item{mdl_handling}{character string specifying the handling of measurement values below the minimum detection limit (MDL). Example choices for this argument include:
+\itemize{
+\item \code{raw}: Returns values exactly as they are stored in the database. Current practice is to return values below the MDL as 0 minus the uncertainty estimate.
+\item \code{half}: Returns values below the MDL as half the MDL
+\item \code{full}: Returns values below the MDL as the MDL
+}}
 }
 \description{
-Remove extra columns associated with QA flags, LIMS, and District recieving. Remove QA "blanks". Convert results from long to wide format.
-}
-\details{
-Current DBHYDRO practice is to return values below the MDL as 0 minus the uncertainty estimate.
+Removes extra columns associated with QA flags and QA blanks which are used to check on potential sources of contamination. If raw is set to TRUE, \code{\link{getwq}} results are converted from long (each piece of data on its own row) to \code{wide} format (each site x variable combination in its own column).
 }
 \examples{
 \dontrun{

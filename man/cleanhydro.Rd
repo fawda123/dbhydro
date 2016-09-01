@@ -4,17 +4,17 @@
 \alias{cleanhydro}
 \title{Clean raw hydrologic DBHYDRO data retrievals}
 \usage{
-cleanhydro(res)
+cleanhydro(dt)
 }
 \arguments{
-\item{res}{output of \code{\link[dbhydroR]{gethydro}}}
+\item{dt}{data.frame output of \code{\link[dbhydroR]{gethydro}}}
 }
 \description{
-Cleans output of gethydro query to be consistent with water quality formatting. Connects metadata header to actual measurements.
+Converts output of \code{\link{gethydro}} from long (each piece of data on its own row) to wide format (each site x variable combination in its own column). Metadata (station-name, variable, measurement units) is parsed so that it is wholly contained in column names.
 }
 \examples{
 \dontrun{
-cleanhydro(gethydro(dbkey = "15081", date_min = "2013-01-01", date_max = "2013-02-02"))
+cleanhydro(gethydro(dbkey = "15081", date_min = "2013-01-01", date_max = "2013-02-02", raw = TRUE))
 }
 }
 
